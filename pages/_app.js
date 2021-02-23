@@ -6,10 +6,10 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>My Shop</title>
+        <title>Simon Say</title>
       </Head>
       <Link href="/">
-        <h1>My Shop</h1>
+        <h1>Donate</h1>
       </Link>
       <Component {...pageProps} />
     </>
