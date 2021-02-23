@@ -2,13 +2,18 @@ import fetch from "isomorphic-fetch";
 import Router from "next/router";
 import RevolutCheckout from "@revolut/checkout";
 import { useState } from "react";
-import { Button, Input, Spacer, Grid, ButtonGroup } from '@geist-ui/react';
-
+import { Button, Input, Spacer, Grid, ButtonGroup, Textarea } from '@geist-ui/react';
 
 
 
 function GoodsPage({ goods, initialCart }) {
   const [cart, setCart] = useState(initialCart);
+
+  const [value, setValue] = useState()
+  const handler = (e) => {
+    setValue(e.target.value)
+    console.log(e.target.value)
+  }
 
   async function handleCheckoutClick() {
     const response = await fetch("/api/orders", {
@@ -33,8 +38,8 @@ function GoodsPage({ goods, initialCart }) {
 
     
   }
-  const add1 = (e) =>  {
-    console.log("1.5");
+  const add1 = (numar) =>  {
+    console.log(numar);
   }
   const add2 = (e) =>  {
     console.log('5');
@@ -51,7 +56,7 @@ function GoodsPage({ goods, initialCart }) {
 <Grid.Container gap={2} justify="left">
       <Grid xs={24}><h2>Catalogue</h2></Grid>
       <Grid xs={24}>
-        <Input placeholder="Min 1" min="1" inputMode="numeric" pattern="" />
+        <Input status="success" placeholder="Min 1" min="1" inputMode="numeric" pattern="" value={1} />
         <Button type="success" onClick={Pay}>Pay</Button>
       </Grid>
       <Grid xs={24}>
@@ -60,6 +65,9 @@ function GoodsPage({ goods, initialCart }) {
         <Button onClick={add2}>5</Button>
         <Button onClick={add3}>100</Button>
   </ButtonGroup>
+      </Grid>
+      <Grid xs={24}>
+      <Textarea placeholder="Please enter your message." status="success" minHeight="65px" />
       </Grid>
     </Grid.Container>
       
