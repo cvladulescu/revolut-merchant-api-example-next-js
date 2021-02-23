@@ -1,5 +1,6 @@
 import fetch from "isomorphic-fetch";
 import Router from "next/router";
+import RevolutCheckout from "@revolut/checkout";
 import { useState } from "react";
 import { Button } from '@geist-ui/react';
 
@@ -32,21 +33,21 @@ function GoodsPage({ goods, initialCart }) {
               })}
             </h3>
             {cart.includes(item.id) ? (
-              <button
+              <Button
                 onClick={() => {
                   setCart(cart.filter(id => id !== item.id));
                 }}
               >
                 Remove from cart
-              </button>
+              </Button>
             ) : (
-              <button
+              <Button
                 onClick={() => {
                   setCart([...cart, item.id]);
                 }}
               >
                 Add to cart
-              </button>
+              </Button>
             )}
           </li>
         ))}
@@ -54,7 +55,7 @@ function GoodsPage({ goods, initialCart }) {
       {cart.length > 0 && (
         <>
           <hr />
-          <button onClick={handleCheckoutClick}>Checkout</button>
+          <Button onClick={handleCheckoutClick}>Checkout</Button>
         </>
       )}
     </>
@@ -89,5 +90,6 @@ export async function getServerSideProps({ query, req }) {
     }
   };
 }
+
 
 export default GoodsPage;

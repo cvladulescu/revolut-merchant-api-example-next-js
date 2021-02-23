@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
 import "../styles.css";
+import { Text, Link } from '@geist-ui/react';
 
 function App({ Component, pageProps }) {
   return (
@@ -8,9 +8,9 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Simon Say</title>
       </Head>
-      <Link href="/">
-        <h1>Donate</h1>
-      </Link>
+      <Text h1><Link href="/" block>
+        Home
+      </Link></Text>
       <Component {...pageProps} />
     </>
   );
