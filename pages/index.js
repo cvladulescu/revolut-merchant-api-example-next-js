@@ -1,9 +1,13 @@
 import fetch from "isomorphic-fetch";
 import Router from "next/router";
-import RevolutCheckout from "@revolut/checkout";
-import { useState } from "react";
+import { useEffect, useState, setState } from "react";
 import { Button, Input, Spacer, Grid, ButtonGroup, Textarea } from '@geist-ui/react';
 
+let valoare;
+const goods3 = ([
+
+  
+]);
 
 
 function GoodsPage({ goods, initialCart }) {
@@ -27,6 +31,10 @@ function GoodsPage({ goods, initialCart }) {
   }
 
   async function Pay(){
+    goods.map(item=> {
+      item.amount = valoare,
+    setCart([...cart,item.id])});
+
     const response = await fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -38,15 +46,35 @@ function GoodsPage({ goods, initialCart }) {
 
     
   }
-  const add1 = (numar) =>  {
-    console.log(numar);
+  function sum (){
+    goods.map(item => item.amount=234)
   }
+  const add1 = (e) =>  {
+    const item2 = {
+      amount:valoare,
+      title:"blabla",
+      id:valoare,
+      currency:"GBP"
+    }
+    
+    goods3.push(item2)
+
+   goods3.map(item =>
+    setCart([...cart, item.id])
+     )
+    console.log(cart)
+   }
   const add2 = (e) =>  {
     console.log('5');
   }
   const add3 = (e) =>  {
     console.log('100');
   }
+  const setAmount = (e) => {
+    setValue(e.target.value)
+     valoare = e.target.value;
+    }
+  
 
 
 
@@ -54,9 +82,9 @@ function GoodsPage({ goods, initialCart }) {
     <>
 
 <Grid.Container gap={2} justify="left">
-      <Grid xs={24}><h2>Catalogue</h2></Grid>
+      <Grid xs={24}><h2>Catalogue ({goods.map(item =>( item.amount/100))})</h2></Grid>
       <Grid xs={24}>
-        <Input status="success" placeholder="Min 1" min="1" inputMode="numeric" pattern="" value={1} />
+        <Input status="success" onChange={setAmount} placeholder="Min 1" min="1" inputMode="numeric" pattern="" value={value} />
         <Button type="success" onClick={Pay}>Pay</Button>
       </Grid>
       <Grid xs={24}>
@@ -84,7 +112,7 @@ function GoodsPage({ goods, initialCart }) {
               })}
             </h3>
             {cart.includes(item.id) ? (
-              <Button
+              <Button type="success"
                 onClick={() => {
                   setCart(cart.filter(id => id !== item.id));
                 }}
@@ -92,7 +120,7 @@ function GoodsPage({ goods, initialCart }) {
                 Remove from cart
               </Button>
             ) : (
-              <Button
+              <Button type="success"
                 onClick={() => {
                   setCart([...cart, item.id]);
                 }}
@@ -117,6 +145,7 @@ export async function getServerSideProps({ query, req }) {
   const baseUrl = `http://${req.headers.host}`;
 
   const response = await fetch(`${baseUrl}/api/goods`);
+  console.log(response);
   const goods = response.ok ? await response.json() : [];
 
   if (query.order) {

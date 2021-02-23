@@ -80,6 +80,7 @@ function CheckoutPage({ order }) {
     currency: order.total.currency
   });
 
+  console.log(order.total.amount)
   return (
     <>
       <h2>Checkout ({sum})</h2>
