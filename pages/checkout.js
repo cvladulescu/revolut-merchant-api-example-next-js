@@ -133,42 +133,43 @@ function CheckoutPage({ order }) {
               ))}
             </select>
           </label>
-          <label>
+          <label className="hidden">
             <div>Region</div>
             <input
               className="form-field"
               name="region"
               autoComplete="address-level1"
               placeholder="Region"
+              type="hidden"
             />
           </label>
-          <label>
+          <label className="hidden">
             <div>City</div>
             <input
               className="form-field"
               name="city"
               autoComplete="address-level2"
               placeholder="City"
-              required
+              type="hidden"
             />
           </label>
-          <label>
+          <label className="hidden">
             <div>Address line 1</div>
             <input
               className="form-field"
               name="streetLine1"
               autoComplete="address-line1"
               placeholder="Street, house number"
-              required
+              type="hidden"
             />
           </label>
-          <label>
+          <label className="hidden">
             <div>Address line 2</div>
             <input
               className="form-field"
               name="streetLine2"
               autoComplete="address-line2"
-              placeholder="Appartment, building"
+              placeholder="Appartment, building" type="hidden"
             />
           </label>
           <div>
@@ -188,7 +189,10 @@ function CheckoutPage({ order }) {
       </form>
       <style jsx>{`
         body{
-          
+
+        }
+        .hidden{
+          display:none;
         }
         .form-fieldset {
           padding: 1rem;

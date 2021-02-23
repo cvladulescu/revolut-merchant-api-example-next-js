@@ -2,7 +2,10 @@ import fetch from "isomorphic-fetch";
 import Router from "next/router";
 import RevolutCheckout from "@revolut/checkout";
 import { useState } from "react";
-import { Button } from '@geist-ui/react';
+import { Button, Input, Spacer, Grid, ButtonGroup } from '@geist-ui/react';
+
+
+
 
 function GoodsPage({ goods, initialCart }) {
   const [cart, setCart] = useState(initialCart);
@@ -18,9 +21,49 @@ function GoodsPage({ goods, initialCart }) {
     Router.push(`/checkout?order=${order.id}`);
   }
 
+  async function Pay(){
+    const response = await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart })
+    });
+
+    const order = await response.json();
+    Router.push(`/checkout?order=${order.id}`);
+
+    
+  }
+  const add1 = (e) =>  {
+    console.log("1.5");
+  }
+  const add2 = (e) =>  {
+    console.log('5');
+  }
+  const add3 = (e) =>  {
+    console.log('100');
+  }
+
+
+
   return (
     <>
-      <h2>Catalogue</h2>
+
+<Grid.Container gap={2} justify="left">
+      <Grid xs={24}><h2>Catalogue</h2></Grid>
+      <Grid xs={24}>
+        <Input placeholder="Min 1" min="1" inputMode="numeric" pattern="" />
+        <Button type="success" onClick={Pay}>Pay</Button>
+      </Grid>
+      <Grid xs={24}>
+        <ButtonGroup type="success">
+        <Button onClick={add1}>1</Button>
+        <Button onClick={add2}>5</Button>
+        <Button onClick={add3}>100</Button>
+  </ButtonGroup>
+      </Grid>
+    </Grid.Container>
+      
+  
       <ul>
         {goods.map(item => (
           <li key={item.id}>

@@ -19,3 +19,7 @@ body {
 :visited {
   color: darkorchid;
 }
+
+input{
+  color: #ffffff !important;
+}
