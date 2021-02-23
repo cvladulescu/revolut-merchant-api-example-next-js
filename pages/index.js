@@ -50,19 +50,19 @@ function GoodsPage({ goods, initialCart }) {
     goods.map(item => item.amount=234)
   }
   const add1 = (e) =>  {
-    const item2 = {
-      amount:valoare,
-      title:"blabla",
-      id:valoare,
-      currency:"GBP"
-    }
+  //   const item2 = {
+  //     amount:valoare,
+  //     title:"blabla",
+  //     id:valoare,
+  //     currency:"GBP"
+  //   }
     
-    goods3.push(item2)
+  //   goods3.push(item2)
 
-   goods3.map(item =>
-    setCart([...cart, item.id])
-     )
-    console.log(cart)
+  //  goods3.map(item =>
+  //   setCart([...cart, item.id])
+  //    )
+  //   console.log(cart)
    }
   const add2 = (e) =>  {
     console.log('5');
