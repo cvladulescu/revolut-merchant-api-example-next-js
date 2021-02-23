@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@geist-ui/react": "^2.1.3",
     "@revolut/checkout": "^1.0.0",
     "country-list": "2.2.0",
     "isomorphic-fetch": "2.2.1",

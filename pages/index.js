@@ -1,6 +1,7 @@
 import fetch from "isomorphic-fetch";
 import Router from "next/router";
 import { useState } from "react";
+import { Button } from '@geist-ui/react';
 
 function GoodsPage({ goods, initialCart }) {
   const [cart, setCart] = useState(initialCart);
