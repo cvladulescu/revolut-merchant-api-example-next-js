@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 Firebase.initializeApp(firebaseConfig);
 
-Firebase.database().ref('/').set("MESAJ")
+Firebase.database().ref('/message').set("MESAJ")
 
 function SuccessPage() {
   return (
