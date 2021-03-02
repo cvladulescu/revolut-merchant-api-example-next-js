@@ -32,7 +32,7 @@ async function handleCreateOrder(req, res) {
       // settlement_currency: `USD` /** Automatically exchange payment to desired currency */,
       ...total
     };
-
+    console.log(payload);
     const response = await fetch(
       `https://sandbox-merchant.revolut.com/api/1.0/orders`,
       {
